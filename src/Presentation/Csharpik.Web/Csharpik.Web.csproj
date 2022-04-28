@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Csharpik.Core\Csharpik.Core.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Csharpik.Data\Csharpik.Data.csproj" />
+  </ItemGroup>
+
 </Project>

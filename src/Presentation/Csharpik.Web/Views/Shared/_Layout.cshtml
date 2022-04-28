@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <link rel="icon" href="~/favicon.png" />
+</head>
+<body>
+    <header>
+        <ul class="nav-link-list">
+            <li class="nav-link-list-li"><a class="nav-link" id="Home" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="nav-link-list-li"><a class="nav-link" id="Lesson" asp-controller="Lesson" asp-action="Index">Lessons</a></li>
+            <li class="nav-link-list-li"><a class="nav-link" id="Book" asp-controller="Book" asp-action="Index">Books</a></li>
+        </ul>
+        <script src="~/js/script.js"></script>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer class= "footer">
+        <div class="footer-powered-text">Created by <a href="https://github.com/ryhorby" class="a-orange">ryhor.by</a></div>
+    </footer>
+</body>
+</html>
