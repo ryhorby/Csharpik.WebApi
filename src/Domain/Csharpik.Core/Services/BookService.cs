@@ -1,5 +1,4 @@
 ﻿using Csharpik.Core.Models.BookModels;
-using Csharpik.Core.Models.Common;
 using Csharpik.Core.Repositories;
 
 namespace Csharpik.Core.Services
@@ -13,12 +12,12 @@ namespace Csharpik.Core.Services
             _bookRepository = bookRepository;
         }
         
-        public ObjectListDto GetAllBooks()
+        public IEnumerable<Book> GetAllBooks()
         {
             return _bookRepository.GetAllBooks();  
         }
 
-        public ObjectDto GetBookById(int id)
+        public Book GetBookById(int id)
         {
             return _bookRepository.GetBookById(id);
         }

@@ -1,5 +1,4 @@
 ﻿using Csharpik.Core.Models.BookModels;
-using Csharpik.Core.Models.Common;
 using Csharpik.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,19 +13,10 @@ namespace Csharpik.Web.Controllers.BookControllers
             _service = service;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            ObjectListDto dto = _service.GetAllBooks();
-
-            List<Book> books = new List<Book>();
-
-            if(dto.HttpCode == 200)
-            {
-                foreach (ICsharpikDtoObject obj in dto.ObjList)
-                {
-                    books.Add(obj as Book);
-                }
-            }
+            IEnumerable<Book> books = _service.GetAllBooks();
 
             return View(books);
         }
