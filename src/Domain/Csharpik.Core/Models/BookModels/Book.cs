@@ -24,8 +24,6 @@ namespace Csharpik.Core.Models.BookModels
         [Required]
         public bool IsFree { get; set; }
 
-        [ForeignKey("Author")]
-        public int AuthorId { get; set; }
-        public Author Author { get; set; } = new Author();
+        public List<Author> Authors { get; set; }
     }
 }

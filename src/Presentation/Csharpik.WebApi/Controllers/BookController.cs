@@ -1,6 +1,7 @@
 ﻿using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 
 namespace Csharpik.WebApi.Controllers
 {
@@ -16,36 +17,35 @@ namespace Csharpik.WebApi.Controllers
             _service = service;
         }
 
-        [Route("All")]
+        //HACK: Create ExceptionHandlerFilter
+        //TODO: Create logger
+
+        [Route("GetAll")]
         [HttpGet]
         public IActionResult GetAllBooks()
         {
-            try
-            {
-                List<BookDto> books = _service.GetAllBooks();
+            List<BookDto> books = _service.GetAll();
 
-                return Ok(books);
-            }
-            catch
-            {
-                return BadRequest(StatusCode(502));
-            }
+            return Json(books);
         }
 
-        [Route("ById")]
+        [Route("GetById")]
         [HttpGet]
         public IActionResult GetBookById(int id)
         {
-            try
-            {
-                BookDto bookDto = _service.GetBookById(id);
+            BookDto bookDto = _service.GetById(id);
 
-                return Ok(bookDto);
-            }
-            catch
-            {
-                return NotFound();
-            }
+            return Json(bookDto);
+        }
+
+
+        [Route("Create")]
+        [HttpPost]
+        public IActionResult CreateBook(BookDto bookDto)
+        {
+            _service.Create(bookDto);
+
+            return Json("succeeded");
         }
     }
 }

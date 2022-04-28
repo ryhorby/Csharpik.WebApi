@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Csharpik.Core.Models.BookModels.dto
 {
-    public class BookDto
+    public class AuthorDto
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string Biography { get; set; }
 
-        public bool IsFree { get; set; }
-
-        public List<int> AuthorsIdList { get; set; }
+        public List<int> BooksIdList { get; set; }
     }
 }

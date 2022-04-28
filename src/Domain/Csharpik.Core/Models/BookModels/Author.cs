@@ -17,9 +17,9 @@ namespace Csharpik.Core.Models.BookModels
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(1000)]
         public string Biography { get; set; }
 
-        public List<Book> Books { get; set; } = new List<Book>();
+        public List<Book> Books { get; set; }
     }
 }
