@@ -1,0 +1,44 @@
+﻿@model List<Book>;
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<ul class="nav-link-list nav-second-link-list">
+    <li class="nav-link-list-li">
+        <a class="nav-link nav-second-link"
+           asp-controller="Book" asp-action="Index" id="Favorite">Search</a>
+    </li>
+
+    <li class="nav-link-list-li">
+        <a class="nav-link nav-second-link"
+           asp-controller="Book" asp-action="FavoriteBooks">Favorite</a>
+    </li>
+</ul>
+
+<form class="search-form" asp-controller="Book" asp-action="Search" method="get">
+    <input class="search-input" type="search" placeholder="Book or author name" name="query" value="" autocomplete="off" />
+    <button class="search-button" type="submit"><img src="~/search.png"></button>
+</form>
+
+@foreach (Book book in Model)
+{
+    @if (book.Title != null)
+    {
+        <ul class="book-list">
+            <li class="book-title-li"><span class="book-li-text">Book: </span><a href="@Url.Action("GetDescription", "Book", new {id = book.Id})">@book.Title</a></li>
+
+            @if (book.Description != null)
+            {
+                <li class="li-description">
+                    <div>
+                        <span class="orange-text">Description: </span>
+                    </div>
+                    <div>
+                        @book.Description
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+}

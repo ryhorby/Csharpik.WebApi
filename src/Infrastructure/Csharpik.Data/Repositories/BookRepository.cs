@@ -1,4 +1,5 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.Common;
 using Csharpik.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,40 @@ namespace Csharpik.Data.Repositories
             _cotnext = cotnext;
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public ObjectListDto GetAllBooks()
         {
-            return _cotnext.Books.ToList();
+            ObjectListDto dto = new ObjectListDto();
+
+            try
+            {
+                dto.HttpCode = 200;
+                dto.ObjList = _cotnext.Books.ToList();
+            }
+            catch (Exception ex)
+            {
+                dto.HttpCode = 404;
+                dto.ErrorMessage = ex.Message;
+            }
+            
+            return dto;
         }
 
-        public Book GetBookById(int id)
+        public ObjectDto GetBookById(int id)
         {
-            return _cotnext.Books.Where(b => b.Id == id).FirstOrDefault();
+            ObjectDto dto = new ObjectDto();
+
+            try
+            {
+                dto.HttpCode = 200;
+                dto.Obj = _cotnext.Books.Where(b => b.Id == id).Single();
+            }
+            catch (Exception ex)
+            {
+                dto.HttpCode = 404;
+                dto.ErrorMessage = ex.Message;
+            }
+
+            return dto;
         }
     }
 }

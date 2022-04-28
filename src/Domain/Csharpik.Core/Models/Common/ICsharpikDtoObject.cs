@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csharpik.Core.Models.Common
 {
-    public class ErrorViewModel
+    public interface ICsharpikDtoObject
     {
-        public string RequestId { get; set; }
     }
 }

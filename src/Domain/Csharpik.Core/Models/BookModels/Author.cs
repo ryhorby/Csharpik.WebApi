@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csharpik.Core.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Csharpik.Core.Models.BookModels
 {
-    public class Author
+    public class Author : ICsharpikDtoObject
     {
         [Key]
         public int Id { get; set; }
