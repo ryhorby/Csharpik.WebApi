@@ -20,9 +20,32 @@ namespace Csharpik.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAllBooks()
         {
-            List<BookDto> books = _service.GetAllBooks();
+            try
+            {
+                List<BookDto> books = _service.GetAllBooks();
 
-            return Ok(books);
+                return Ok(books);
+            }
+            catch
+            {
+                return BadRequest(StatusCode(502));
+            }
+        }
+
+        [Route("ById")]
+        [HttpGet]
+        public IActionResult GetBookById(int id)
+        {
+            try
+            {
+                BookDto bookDto = _service.GetBookById(id);
+
+                return Ok(bookDto);
+            }
+            catch
+            {
+                return NotFound();
+            }
         }
     }
 }

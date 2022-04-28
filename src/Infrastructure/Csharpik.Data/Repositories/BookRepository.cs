@@ -18,19 +18,18 @@ namespace Csharpik.Data.Repositories
             _context = context;
         }
 
-        public List<BookDto> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
             List<Book> books = _context.Books.ToList();
-            List<BookDto> dtoBooks = new List<BookDto>();
+            
+            return books;
+        }
 
-            foreach (var book in books)
-            {
-                dtoBooks.Add(new BookDto(
-                    book.Id, book.Title, book.Description)
-                    );
-            }
-  
-            return dtoBooks;
+        public Book GetBookById(int id)
+        {
+            Book book = _context.Books.FirstOrDefault(x => x.Id == id);
+
+            return book;
         }
     }
 }
