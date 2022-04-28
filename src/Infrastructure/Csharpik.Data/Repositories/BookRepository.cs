@@ -10,14 +10,21 @@ namespace Csharpik.Data.Repositories
 {
     public class BookRepository : IBookRepository
     {
+        private readonly CsharpikContext _cotnext;
+
+        public BookRepository(CsharpikContext cotnext)
+        {
+            _cotnext = cotnext;
+        }
+
         public IEnumerable<Book> GetAllBooks()
         {
-            throw new NotImplementedException();
+            return _cotnext.Books.ToList();
         }
 
         public Book GetBookById(int id)
         {
-            throw new NotImplementedException();
+            return _cotnext.Books.Where(b => b.Id == id).FirstOrDefault();
         }
     }
 }

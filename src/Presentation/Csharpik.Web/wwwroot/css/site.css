@@ -21,7 +21,6 @@ main {
     flex-direction: column;
     min-height: calc(100% - 3em - 4em);
     max-height: fit-content;
-    -moz-fit-content: fit-content;
 }
 
 a{
