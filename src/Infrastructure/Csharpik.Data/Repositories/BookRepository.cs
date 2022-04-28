@@ -1,4 +1,5 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,26 @@ namespace Csharpik.Data.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly CsharpikContext _cotnext;
+        private readonly CsharpikContext _context;
 
-        public BookRepository(CsharpikContext cotnext)
+        public BookRepository(CsharpikContext context)
         {
-            _cotnext = cotnext;
+            _context = context;
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<BookDto> GetAllBooks()
         {
-            List<Book> books = _cotnext.Books.ToList();
-            
-            return books;
-        }
+            List<Book> books = _context.Books.ToList();
+            List<BookDto> dtoBooks = new List<BookDto>();
 
-        public Book GetBookById(int id)
-        {
-            Book book = _cotnext.Books.Where(b => b.Id == id).Single();
-
-            return book;
+            foreach (var book in books)
+            {
+                dtoBooks.Add(new BookDto(
+                    book.Id, book.Title, book.Description)
+                    );
+            }
+  
+            return dtoBooks;
         }
     }
 }

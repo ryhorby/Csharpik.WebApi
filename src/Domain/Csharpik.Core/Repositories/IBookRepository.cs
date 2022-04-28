@@ -1,10 +1,9 @@
-﻿using Csharpik.Core.Models.BookModels;
+﻿using Csharpik.Core.Models.BookModels.dto;
 
 namespace Csharpik.Core.Repositories
 {
     public interface IBookRepository
     {
-        public Book GetBookById(int id);
-        public IEnumerable<Book> GetAllBooks();
+        public List<BookDto> GetAllBooks();
     }
 }
