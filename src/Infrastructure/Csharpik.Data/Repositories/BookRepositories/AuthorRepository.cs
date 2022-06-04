@@ -18,56 +18,25 @@ namespace Csharpik.Data.Repositories.BookRepositories
             _context = context;
         }
 
-        public List<Author> GetAll()
+        public IEnumerable<Author> GetAll()
         {
-            try
-            {
-                List<Author> authors = _context.Authors.ToList();
+            List<Author> authors = _context.Authors.ToList();
 
-                return authors;
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new HttpRequestException("This book was not found", ex, HttpStatusCode.NotFound);
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            return authors;
         }
 
         public Author GetById(int id)
         {
-            try
-            {
-                Author author = _context.Authors.FirstOrDefault(x => x.Id == id);
+            Author author = _context.Authors.FirstOrDefault(x => x.Id == id);
 
-                return author;
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new HttpRequestException("This book was not found", ex, HttpStatusCode.NotFound);
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            return author;
         }
 
+        /* TODO: Realize creating
         public void Create(Author author)
         {
-            try
-            {
-                _context.Add(author);
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new HttpRequestException("This book was not found", ex, HttpStatusCode.NotFound);
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            _context.Add(author);
         }
+        */
     }
 }

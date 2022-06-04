@@ -3,6 +3,7 @@ using Csharpik.Core.Repositories;
 using Csharpik.Core.Repositories.CommonRepositories;
 using Csharpik.Core.Services;
 using Csharpik.Core.Services.BookServices;
+using Csharpik.Core.Services.Interfaces.BookServices;
 using Csharpik.Data;
 using Csharpik.Data.Repositories;
 using Csharpik.Data.Repositories.BookRepositories;
@@ -20,8 +21,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
 builder.Services.AddScoped<IRepository<Author>, AuthorRepository>();
-builder.Services.AddScoped<BookService>();
-builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<IBookService<Book>, BookService>();
+builder.Services.AddScoped<IBookService<Author>, AuthorService >();
 
 //DbSet
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

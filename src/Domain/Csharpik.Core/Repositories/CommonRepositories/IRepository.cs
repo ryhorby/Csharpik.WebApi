@@ -8,10 +8,11 @@ namespace Csharpik.Core.Repositories.CommonRepositories
 {
     public interface IRepository<T> where T : class
     {
-        public List<T> GetAll();
+        public IEnumerable<T> GetAll();
 
         public T GetById(int id);
 
-        public void Create(T item);
+        //TODO:
+        //public void Create(T item);
     }
 }

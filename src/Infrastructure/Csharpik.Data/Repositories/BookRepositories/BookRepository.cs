@@ -1,13 +1,5 @@
 ﻿using Csharpik.Core.Models.BookModels;
-using Csharpik.Core.Models.BookModels.dto;
-using Csharpik.Core.Repositories;
 using Csharpik.Core.Repositories.CommonRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Csharpik.Data.Repositories
 {
@@ -20,54 +12,25 @@ namespace Csharpik.Data.Repositories
             _context = context;
         }
 
-        public List<Book> GetAll()
+        public IEnumerable<Book> GetAll()
         {
-            try
-            {
-                List<Book> books = _context.Books.ToList();
-
-                return books;
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            List<Book> books = _context.Books.ToList();
+           
+            return books;
         }
 
         public Book GetById(int id)
         {
-            try
-            {
-                Book book = _context.Books.FirstOrDefault(x => x.Id == id);
+            Book book = _context.Books.FirstOrDefault(x => x.Id == id);
 
-                return book;
-            }
-            catch(ArgumentNullException ex)
-            {
-                throw new HttpRequestException("This book was not found", ex, HttpStatusCode.NotFound);
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            return book;
         }
 
+        /* TODO: Realize creating
         public void Create(Book book)
         {
-            try
-            {
-                foreach (Book bookFromDb in GetAll())
-                {
-                    if (bookFromDb.Title == book.Title)
-                        throw new HttpRequestException("This book has already exist", null, HttpStatusCode.Conflict);
-                }
-
-                _context.Add(book);
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message, ex, HttpStatusCode.BadGateway);
-            }
+            _context.Add(book);
         }
+        */
     }
 }

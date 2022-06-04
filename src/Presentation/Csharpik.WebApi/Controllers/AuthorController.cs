@@ -1,6 +1,5 @@
 ﻿using Csharpik.Core.Models.BookModels;
-using Csharpik.Core.Models.BookModels.dto;
-using Csharpik.Core.Services.BookServices;
+using Csharpik.Core.Services.Interfaces.BookServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 
@@ -11,9 +10,9 @@ namespace Csharpik.WebApi.Controllers
     [Route("[controller]")]
     public class AuthorController : Controller
     {
-        private readonly AuthorService _service;
+        private readonly IBookService<Author> _service;
 
-        public AuthorController(AuthorService service)
+        public AuthorController(IBookService<Author> service)
         {
             _service = service;
         }
@@ -25,7 +24,7 @@ namespace Csharpik.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAllAuthors()
         {
-            List<AuthorDto> authors = _service.GetAll();
+            IEnumerable<Author> authors = _service.GetAll();
 
             return Json(authors);
 
@@ -35,7 +34,7 @@ namespace Csharpik.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAuthorById(int id)
         {
-            AuthorDto authorDto = _service.GetById(id);
+            Author authorDto = _service.GetById(id);
 
             return Json(authorDto);
         }
