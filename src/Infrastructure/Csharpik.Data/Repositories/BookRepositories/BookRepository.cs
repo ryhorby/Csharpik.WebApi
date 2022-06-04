@@ -14,7 +14,7 @@ namespace Csharpik.Data.Repositories
 
         public IEnumerable<Book> GetAll()
         {
-            List<Book> books = _context.Books.ToList();
+            IEnumerable<Book> books = _context.Books;
            
             return books;
         }

@@ -3,7 +3,9 @@ using Csharpik.Core.Repositories;
 using Csharpik.Core.Repositories.CommonRepositories;
 using Csharpik.Core.Services;
 using Csharpik.Core.Services.BookServices;
+using Csharpik.Core.Services.CryptoService;
 using Csharpik.Core.Services.Interfaces.BookServices;
+using Csharpik.Core.Services.Interfaces.CryptoService;
 using Csharpik.Data;
 using Csharpik.Data.Repositories;
 using Csharpik.Data.Repositories.BookRepositories;
@@ -19,10 +21,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//BookProject
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
 builder.Services.AddScoped<IRepository<Author>, AuthorRepository>();
 builder.Services.AddScoped<IBookService<Book>, BookService>();
 builder.Services.AddScoped<IBookService<Author>, AuthorService >();
+
+//CryptoProject
+builder.Services.AddScoped<IEncryptorService, EncryptorService>();
+builder.Services.AddScoped<IDecryptorService, DecryptorService>();
 
 //DbSet
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

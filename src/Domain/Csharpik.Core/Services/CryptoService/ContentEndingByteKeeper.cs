@@ -12,8 +12,7 @@ namespace Csharpik.Core.Services.CryptoService
         private Dictionary<string, int[]> ContentTypesByteEnding = new Dictionary<string, int[]>()
         {
             { "image/jpeg", new int[2] { 255, 217 } },
-            { "image/png", new int[2] { 96, 130 } },
-            { "image/jpg", new int[2] { 255, 217 } }
+            { "image/png", new int[2] { 96, 130 } }
         };
 
         public ContentEndingByteKeeper(IFormFile file)

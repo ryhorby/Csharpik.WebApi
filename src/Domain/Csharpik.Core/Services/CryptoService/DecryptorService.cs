@@ -10,7 +10,6 @@ namespace Csharpik.Core.Services.CryptoService
 {
     public class DecryptorService : IDecryptorService
     {
-
         private ContentEndingByteKeeper _contentEndingByteKeeper = new();
 
         public string Decrypt(IFormFile file)

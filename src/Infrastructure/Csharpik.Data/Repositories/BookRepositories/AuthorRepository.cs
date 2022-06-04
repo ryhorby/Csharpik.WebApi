@@ -20,7 +20,7 @@ namespace Csharpik.Data.Repositories.BookRepositories
 
         public IEnumerable<Author> GetAll()
         {
-            List<Author> authors = _context.Authors.ToList();
+            IEnumerable<Author> authors = _context.Authors;
 
             return authors;
         }
