@@ -1,24 +1,27 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Repositories.CommonRepositories;
 using Csharpik.Core.Services.Interfaces.BookServices;
 
 namespace Csharpik.Core.Services.BookServices
 {
-    public class AuthorService : IBookService<Author>
+    public class AuthorService : IBookService<AuthorDto>
     {
-        private readonly IRepository<Author> _authorRepository;
+        private readonly IRepository<AuthorDto> _authorRepository;
 
-        public AuthorService(IRepository<Author> authorRepository)
+        public AuthorService(IRepository<AuthorDto> authorRepository)
         {
             _authorRepository = authorRepository;
         }
 
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<AuthorDto> GetAll()
         {
-            return _authorRepository.GetAll();
+            IEnumerable<AuthorDto> authors = _authorRepository.GetAll();
+
+            return authors;
         }
 
-        public Author GetById(int id)
+        public AuthorDto GetById(int id)
         {
             return _authorRepository.GetById(id);
         }

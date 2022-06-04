@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Csharpik.Core.Models.BookModels
+namespace Csharpik.Core.Models.BookModels.dto
 {
-    public class Book
+    public class BookDto
     {
         [Key]
         public int Id { get; set; }
@@ -24,6 +23,6 @@ namespace Csharpik.Core.Models.BookModels
         [Required]
         public bool IsFree { get; set; }
 
-        public ICollection<BookAuthor> Authors { get; set; }
+        public ICollection<int> AuthorsId { get; set; }
     }
 }

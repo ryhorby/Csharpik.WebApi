@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Csharpik.Core.Models.BookModels
+namespace Csharpik.Core.Models.BookModels.dto
 {
-    public class Author
+    public class AuthorDto
     {
+
         [Key]
         public int Id { get; set; }
 
@@ -20,6 +21,6 @@ namespace Csharpik.Core.Models.BookModels
         [MaxLength(1000)]
         public string Biography { get; set; }
 
-        public ICollection<BookAuthor> Books { get; set; }
+        public ICollection<int> BooksId { get; set; }
     }
 }

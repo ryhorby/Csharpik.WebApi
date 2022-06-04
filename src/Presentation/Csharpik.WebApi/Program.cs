@@ -1,5 +1,5 @@
 using Csharpik.Core.Models.BookModels;
-using Csharpik.Core.Repositories;
+using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Repositories.CommonRepositories;
 using Csharpik.Core.Services;
 using Csharpik.Core.Services.BookServices;
@@ -23,9 +23,9 @@ builder.Services.AddSwaggerGen();
 
 //BookProject
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
-builder.Services.AddScoped<IRepository<Author>, AuthorRepository>();
+builder.Services.AddScoped<IRepository<AuthorDto>, AuthorRepository>();
 builder.Services.AddScoped<IBookService<Book>, BookService>();
-builder.Services.AddScoped<IBookService<Author>, AuthorService >();
+builder.Services.AddScoped<IBookService<AuthorDto>, AuthorService >();
 
 //CryptoProject
 builder.Services.AddScoped<IEncryptorService, EncryptorService>();
