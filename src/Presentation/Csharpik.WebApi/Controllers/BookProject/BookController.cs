@@ -2,11 +2,11 @@
 using Csharpik.Core.Services.Interfaces.BookServices;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Csharpik.WebApi.Controllers
+namespace Csharpik.WebApi.Controllers.BookProject
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("Book")]
     public class BookController : Controller
     {
         private readonly IBookService<Book> _service;
@@ -19,7 +19,7 @@ namespace Csharpik.WebApi.Controllers
         //HACK: Create ExceptionHandlerFilter
         //TODO: Create logger
 
-        [Route("GetAll")]
+        [Route("GetAllBooks")]
         [HttpGet]
         public IActionResult GetAllBooks()
         {
@@ -28,7 +28,7 @@ namespace Csharpik.WebApi.Controllers
             return Json(books);
         }
 
-        [Route("GetById")]
+        [Route("GetBookById")]
         [HttpGet]
         public IActionResult GetBookById(int id)
         {

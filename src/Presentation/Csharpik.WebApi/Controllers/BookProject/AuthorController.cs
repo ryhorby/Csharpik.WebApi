@@ -1,13 +1,12 @@
 ﻿using Csharpik.Core.Models.BookModels;
 using Csharpik.Core.Services.Interfaces.BookServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 
-namespace Csharpik.WebApi.Controllers
+namespace Csharpik.WebApi.Controllers.BookProject
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("Author")]
     public class AuthorController : Controller
     {
         private readonly IBookService<Author> _service;
@@ -20,7 +19,7 @@ namespace Csharpik.WebApi.Controllers
         //HACK: Create ExceptionHandlerFilter
         //TODO: Create logger
 
-        [Route("GetAll")]
+        [Route("GetAllAuthor")]
         [HttpGet]
         public IActionResult GetAllAuthors()
         {
@@ -30,7 +29,7 @@ namespace Csharpik.WebApi.Controllers
 
         }
 
-        [Route("GetById")]
+        [Route("GetAuthorById")]
         [HttpGet]
         public IActionResult GetAuthorById(int id)
         {

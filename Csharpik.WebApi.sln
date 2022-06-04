@@ -5,10 +5,6 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ADA7228D-3A3E-47D7-BCB4-B173692D58B4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{9DC2154E-70A2-47ED-AA21-BCCEE15539E5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csharpik.Core", "src\Domain\Csharpik.Core\Csharpik.Core.csproj", "{98693DA3-31FC-4A52-9808-19E68EED173B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{309F1801-40C9-4C38-B345-BE552BDA6A31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csharpik.Data", "src\Infrastructure\Csharpik.Data\Csharpik.Data.csproj", "{F6C7D362-B811-406E-AF33-93533F207D59}"
@@ -17,16 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharpik.WebApi", "src\Presentation\Csharpik.WebApi\Csharpik.WebApi.csproj", "{678081DF-6046-4BFC-937F-7E68E9A72218}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F76EDA02-DF51-4D81-9EA9-EE36B0210503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharpik.Core", "src\Domain\Csharpik.Core\Csharpik.Core.csproj", "{B9850F19-A19B-46DA-B470-BF0D5A6D176F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{98693DA3-31FC-4A52-9808-19E68EED173B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98693DA3-31FC-4A52-9808-19E68EED173B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98693DA3-31FC-4A52-9808-19E68EED173B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98693DA3-31FC-4A52-9808-19E68EED173B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6C7D362-B811-406E-AF33-93533F207D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6C7D362-B811-406E-AF33-93533F207D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6C7D362-B811-406E-AF33-93533F207D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,17 +31,21 @@ Global
 		{678081DF-6046-4BFC-937F-7E68E9A72218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678081DF-6046-4BFC-937F-7E68E9A72218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678081DF-6046-4BFC-937F-7E68E9A72218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9850F19-A19B-46DA-B470-BF0D5A6D176F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9850F19-A19B-46DA-B470-BF0D5A6D176F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9850F19-A19B-46DA-B470-BF0D5A6D176F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9850F19-A19B-46DA-B470-BF0D5A6D176F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9DC2154E-70A2-47ED-AA21-BCCEE15539E5} = {ADA7228D-3A3E-47D7-BCB4-B173692D58B4}
-		{98693DA3-31FC-4A52-9808-19E68EED173B} = {9DC2154E-70A2-47ED-AA21-BCCEE15539E5}
 		{309F1801-40C9-4C38-B345-BE552BDA6A31} = {ADA7228D-3A3E-47D7-BCB4-B173692D58B4}
 		{F6C7D362-B811-406E-AF33-93533F207D59} = {309F1801-40C9-4C38-B345-BE552BDA6A31}
 		{343E7691-7FEF-48CC-A138-39111F5996EE} = {ADA7228D-3A3E-47D7-BCB4-B173692D58B4}
 		{678081DF-6046-4BFC-937F-7E68E9A72218} = {343E7691-7FEF-48CC-A138-39111F5996EE}
+		{F76EDA02-DF51-4D81-9EA9-EE36B0210503} = {ADA7228D-3A3E-47D7-BCB4-B173692D58B4}
+		{B9850F19-A19B-46DA-B470-BF0D5A6D176F} = {F76EDA02-DF51-4D81-9EA9-EE36B0210503}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B8F85F2-85D0-4E36-8AED-8B4520CE6E8B}
