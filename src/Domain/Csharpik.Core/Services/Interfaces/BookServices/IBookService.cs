@@ -14,5 +14,9 @@ namespace Csharpik.Core.Services.Interfaces.BookServices
         T GetById(int id);
 
         void Create(T item);
+  
+        T Update(T item);
+
+        void Delete(int id);
     }
 }

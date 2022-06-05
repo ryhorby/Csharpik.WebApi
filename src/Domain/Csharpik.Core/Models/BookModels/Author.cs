@@ -22,6 +22,14 @@ namespace Csharpik.Core.Models.BookModels
             Biography = dto.Biography;
         }
 
+        public Author(AuthorDto dto, int id)
+        {
+            Id = id;
+            Name = dto.Name;
+            Surname = dto.Surname;
+            Biography = dto.Biography;
+        }
+
         [Key]
         public int Id { get; set; }
 

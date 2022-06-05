@@ -39,18 +39,39 @@ namespace Csharpik.Core.Services
         {
             List<Author> authors = new List<Author>();
 
-            if (item.AuthorsId != null && item.AuthorsId.Count != 0)
+            foreach (int id in item.AuthorsId)
             {
-                foreach (int id in item.AuthorsId)
-                {
-                    authors.Add(_authorRepository.GetById(id));
-                }
+                authors.Add(_authorRepository.GetById(id));
             }
 
             Book book = new Book(item);
             book.Authors = authors;
 
             _bookRepository.Create(book);
+        }
+
+        public BookDto Update(BookDto item)
+        {
+            List<Author> authors = new List<Author>();
+
+            foreach (int id in item.AuthorsId)
+            {
+                authors.Add(_authorRepository.GetById(id));
+            }
+
+            Book book = new Book(item, item.Id);
+            book.Authors = authors;
+
+            book = _bookRepository.Update(book);
+
+            BookDto dto = new BookDto(book);
+
+            return dto;
+        }
+
+        public void Delete(int id)
+        {
+            _bookRepository.Delete(id);
         }
     }
 }
