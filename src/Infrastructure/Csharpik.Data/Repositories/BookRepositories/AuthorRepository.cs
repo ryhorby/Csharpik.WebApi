@@ -1,5 +1,7 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Repositories.CommonRepositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +22,18 @@ namespace Csharpik.Data.Repositories.BookRepositories
 
         public IEnumerable<Author> GetAll()
         {
-            IEnumerable<Author> authors = _context.Authors;
+            IEnumerable<Author> authors = _context.Authors
+                  .Include(a => a.Books);
 
             return authors;
         }
 
         public Author GetById(int id)
         {
-            Author author = _context.Authors.FirstOrDefault(x => x.Id == id);
+            Author author = _context.Authors.Include(a => a.Books)
+                                    .FirstOrDefault(x => x.Id == id);
 
+            //HACK:
             return author;
         }
 
