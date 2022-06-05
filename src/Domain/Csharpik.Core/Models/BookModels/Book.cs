@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csharpik.Core.Models.BookModels.dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,18 @@ namespace Csharpik.Core.Models.BookModels
 {
     public class Book
     {
+        public Book()
+        {
+
+        }
+
+        public Book(BookDto dto)
+        {
+            Title = dto.Title;
+            Description = dto.Description;
+            IsFree = dto.IsFree;
+        }
+
         [Key]
         public int Id { get; set; }
 

@@ -12,5 +12,7 @@ namespace Csharpik.Core.Services.Interfaces.BookServices
         public IEnumerable<T> GetAll();
 
         T GetById(int id);
+
+        void Create(T item);
     }
 }

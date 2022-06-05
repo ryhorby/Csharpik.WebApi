@@ -9,6 +9,11 @@ namespace Csharpik.Core.Models.BookModels.dto
 {
     public class AuthorDto
     {
+        public AuthorDto()
+        {
+
+        }
+
         public AuthorDto(Author author)
         {
             Id = author.Id;
@@ -17,7 +22,7 @@ namespace Csharpik.Core.Models.BookModels.dto
             Biography = author.Biography;
             BooksId = new List<int>();
 
-            if (author.Books.Count != 0)
+            if (author.Books != null && author.Books.Count != 0)
             {
                 foreach (Book book in author.Books)
                 {

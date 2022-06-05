@@ -33,5 +33,12 @@ namespace Csharpik.Core.Services.BookServices
 
             return dto;
         }
+
+        public void Create(AuthorDto dto)
+        {
+            Author author = new Author(dto);
+
+            _authorRepository.Create(author);
+        }
     }
 }

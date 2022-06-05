@@ -9,6 +9,29 @@ namespace Csharpik.Core.Models.BookModels.dto
 {
     public class BookDto
     {
+        public BookDto()
+        {
+
+        }
+
+        public BookDto(Book book)
+        {
+            Id = book.Id;
+            Title = book.Title;
+            Description = book.Description;
+            IsFree = book.IsFree;
+            AuthorsId = new List<int>();
+
+            if (book.Authors != null && book.Authors.Count != 0)
+            {
+                foreach (Author author in book.Authors)
+                {
+                    AuthorsId.Add(author.Id);
+                }
+            }
+        }
+
+
         [Key]
         public int Id { get; set; }
 
