@@ -1,10 +1,11 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Repositories.CommonRepositories;
 using Csharpik.Core.Services.Interfaces.BookServices;
 
 namespace Csharpik.Core.Services
 {
-    public class BookService : IBookService<Book>
+    public class BookService : IBookService<BookDto>
     {
         private readonly IRepository<Book> _bookRepository;
 
@@ -13,14 +14,22 @@ namespace Csharpik.Core.Services
             _bookRepository = bookRepository;
         }
 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<BookDto> GetAll()
         {
-            return _bookRepository.GetAll();
+            IEnumerable<Book> books = _bookRepository.GetAll();
+            List<BookDto> booksDto = new List<BookDto>();
+
+            foreach (Book book in books)
+            {
+                booksDto.Add(new BookDto(book));
+            }
+
+            return booksDto;
         }
 
-        public Book GetById(int id)
+        public BookDto GetById(int id)
         {
-            return _bookRepository.GetById(id);
+            return new BookDto(_bookRepository.GetById(id));
         }
     }
 }

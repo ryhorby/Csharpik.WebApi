@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace Csharpik.Data.Repositories.BookRepositories
 {
+
+    //TODO: Catch 404
     public class AuthorRepository : IRepository<Author>
     {
         private readonly CsharpikContext _context;
@@ -33,7 +35,6 @@ namespace Csharpik.Data.Repositories.BookRepositories
             Author author = _context.Authors.Include(a => a.Books)
                                     .FirstOrDefault(x => x.Id == id);
 
-            //HACK:
             return author;
         }
 
