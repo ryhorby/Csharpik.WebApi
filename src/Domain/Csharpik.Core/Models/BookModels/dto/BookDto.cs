@@ -10,6 +10,7 @@ namespace Csharpik.Core.Models.BookModels.dto
         {
 
         }
+
         public BookDto(Book book)
         {
             Id = book.Id;

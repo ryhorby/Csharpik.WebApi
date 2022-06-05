@@ -39,12 +39,9 @@ namespace Csharpik.Core.Services
         {
             List<Author> authors = new List<Author>();
 
-            if (item.AuthorsId != null && item.AuthorsId.Count != 0)
+            foreach (int id in item.AuthorsId)
             {
-                foreach (int id in item.AuthorsId)
-                {
-                    authors.Add(_authorRepository.GetById(id));
-                }
+                authors.Add(_authorRepository.GetById(id));
             }
 
             Book book = new Book(item);
