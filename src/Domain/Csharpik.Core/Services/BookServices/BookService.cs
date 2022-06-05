@@ -34,7 +34,7 @@ namespace Csharpik.Core.Services
             return new BookDto(_bookRepository.GetById(id));
         }
 
-        //TODO:
+        //TODO: Check on author exist or not and return correct exceprion 404
         public void Create(BookDto item)
         {
             List<Author> authors = new List<Author>();
@@ -46,7 +46,6 @@ namespace Csharpik.Core.Services
                     authors.Add(_authorRepository.GetById(id));
                 }
             }
-
 
             Book book = new Book(item);
             book.Authors = authors;

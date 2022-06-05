@@ -20,13 +20,13 @@ namespace Csharpik.Core.Models.BookModels.dto
             Name = author.Name;
             Surname = author.Surname;
             Biography = author.Biography;
-            BooksId = new List<int>();
+            Books = new List<BookDto>();
 
             if (author.Books != null && author.Books.Count != 0)
             {
                 foreach (Book book in author.Books)
                 {
-                    BooksId.Add(book.Id);
+                    Books.Add(new BookDto(book));
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace Csharpik.Core.Models.BookModels.dto
         [MaxLength(1000)]
         public string Biography { get; set; }
 
-        public ICollection<int> BooksId { get; set; }
+        public ICollection<BookDto> Books { get; set; }
 
     }
 }
