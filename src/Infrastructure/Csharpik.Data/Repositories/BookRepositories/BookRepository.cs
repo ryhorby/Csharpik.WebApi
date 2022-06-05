@@ -6,6 +6,8 @@ namespace Csharpik.Data.Repositories
 {
 
     //TODO: Catch 404
+    //TODO: Create pagebility
+
     public class BookRepository : IRepository<Book>
     {
         private readonly CsharpikContext _context;
@@ -31,7 +33,6 @@ namespace Csharpik.Data.Repositories
             return book;
         }
 
-        // TODO: Realize creating
         public void Create(Book book)
         {
             _context.Add(book);
