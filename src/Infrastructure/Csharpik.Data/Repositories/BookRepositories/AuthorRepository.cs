@@ -38,11 +38,11 @@ namespace Csharpik.Data.Repositories.BookRepositories
             return author;
         }
 
-        /* TODO: Realize creating
+        //TODO: Realize creating
         public void Create(Author author)
         {
             _context.Add(author);
+            _context.SaveChanges();
         }
-        */
     }
 }

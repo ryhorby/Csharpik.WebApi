@@ -31,5 +31,11 @@ namespace Csharpik.Core.Services
         {
             return new BookDto(_bookRepository.GetById(id));
         }
+        
+        //TODO:
+        public void Create(BookDto item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

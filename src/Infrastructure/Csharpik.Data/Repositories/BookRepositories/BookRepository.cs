@@ -31,11 +31,10 @@ namespace Csharpik.Data.Repositories
             return book;
         }
 
-        /* TODO: Realize creating
+        // TODO: Realize creating
         public void Create(Book book)
         {
-            _context.Add(book);
+            throw new NotImplementedException();
         }
-        */
     }
 }
