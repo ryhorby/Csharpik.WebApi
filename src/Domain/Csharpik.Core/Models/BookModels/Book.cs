@@ -23,6 +23,14 @@ namespace Csharpik.Core.Models.BookModels
             IsFree = dto.IsFree;
         }
 
+        public Book(BookDto dto, int id)
+        {
+            Id = id;
+            Title = dto.Title;
+            Description = dto.Description;
+            IsFree = dto.IsFree;
+        }
+
         [Key]
         public int Id { get; set; }
 

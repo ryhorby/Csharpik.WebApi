@@ -13,5 +13,7 @@ namespace Csharpik.Core.Repositories.CommonRepositories
         public T GetById(int id);
 
         public void Create(T item);
+
+        public T Update(T item); 
     }
 }

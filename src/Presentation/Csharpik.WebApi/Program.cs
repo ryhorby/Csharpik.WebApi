@@ -11,6 +11,10 @@ using Csharpik.Data.Repositories;
 using Csharpik.Data.Repositories.BookRepositories;
 using Microsoft.EntityFrameworkCore;
 
+
+//TODO: Create ExceptionHandlerFilter
+//TODO: Create logger
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

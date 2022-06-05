@@ -16,10 +16,7 @@ namespace Csharpik.WebApi.Controllers.BookProject
             _service = service;
         }
 
-        //HACK: Create ExceptionHandlerFilter
-        //TODO: Create logger
-
-        [Route("GetBooks")]
+        [Route("GetAll")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -44,6 +41,14 @@ namespace Csharpik.WebApi.Controllers.BookProject
             _service.Create(dto);
 
             return Ok("Book was succesfully added");
+        }
+
+
+        [Route("Update")]
+        [HttpPut]
+        public IActionResult Update(BookDto dto)
+        {
+            return Ok(_service.Update(dto));
         }
     }
 }

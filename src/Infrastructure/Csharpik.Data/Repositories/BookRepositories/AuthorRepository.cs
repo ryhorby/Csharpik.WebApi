@@ -14,6 +14,8 @@ namespace Csharpik.Data.Repositories.BookRepositories
 
     //TODO: Catch 404
     //TODO: Create pagebility
+    //TODO: Delete method(if the last authors was deleted, delete book also)
+
     public class AuthorRepository : IRepository<Author>
     {
         private readonly CsharpikContext _context;
@@ -43,6 +45,14 @@ namespace Csharpik.Data.Repositories.BookRepositories
         {
             _context.Add(author);
             _context.SaveChanges();
+        }
+
+        public Author Update(Author author)
+        {
+            _context.Update(author);
+            _context.SaveChanges();
+
+            return GetById(author.Id);
         }
     }
 }

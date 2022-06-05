@@ -49,5 +49,16 @@ namespace Csharpik.Core.Services
 
             _bookRepository.Create(book);
         }
+
+        public BookDto Update(BookDto item)
+        {
+            Book book = new Book(item, item.Id);
+            
+            book = _bookRepository.Update(book);
+
+            BookDto dto = new BookDto(book);
+
+            return dto;
+        }
     }
 }

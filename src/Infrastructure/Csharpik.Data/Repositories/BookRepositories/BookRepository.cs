@@ -38,5 +38,13 @@ namespace Csharpik.Data.Repositories
             _context.Add(book);
             _context.SaveChanges();
         }
+
+        public Book Update(Book book)
+        {
+            _context.Update(book);
+            _context.SaveChanges();
+
+            return GetById(book.Id);
+        }
     }
 }
