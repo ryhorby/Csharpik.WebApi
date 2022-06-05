@@ -19,22 +19,31 @@ namespace Csharpik.WebApi.Controllers.BookProject
         //HACK: Create ExceptionHandlerFilter
         //TODO: Create logger
 
-        [Route("GetAllBooks")]
+        [Route("GetBooks")]
         [HttpGet]
-        public IActionResult GetAllBooks()
+        public IActionResult GetAll()
         {
             IEnumerable<BookDto> books = _service.GetAll();
 
             return Json(books);
         }
 
-        [Route("GetBookById")]
+        [Route("GetById")]
         [HttpGet]
-        public IActionResult GetBookById(int id)
+        public IActionResult GetById(int id)
         {
             BookDto bookDto = _service.GetById(id);
 
             return Json(bookDto);
+        }
+
+        [Route("Create")]
+        [HttpPost]
+        public IActionResult Create(BookDto dto)
+        {
+            _service.Create(dto);
+
+            return Ok("Book was succesfully added");
         }
     }
 }

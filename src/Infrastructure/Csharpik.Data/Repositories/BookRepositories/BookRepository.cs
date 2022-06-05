@@ -34,7 +34,8 @@ namespace Csharpik.Data.Repositories
         // TODO: Realize creating
         public void Create(Book book)
         {
-            throw new NotImplementedException();
+            _context.Add(book);
+            _context.SaveChanges();
         }
     }
 }

@@ -8,10 +8,12 @@ namespace Csharpik.Core.Services
     public class BookService : IBookService<BookDto>
     {
         private readonly IRepository<Book> _bookRepository;
+        private readonly IRepository<Author> _authorRepository;
 
-        public BookService(IRepository<Book> bookRepository)
+        public BookService(IRepository<Book> bookRepository, IRepository<Author> authorRepository)
         {
             _bookRepository = bookRepository;
+            _authorRepository = authorRepository;
         }
 
         public IEnumerable<BookDto> GetAll()
@@ -31,11 +33,25 @@ namespace Csharpik.Core.Services
         {
             return new BookDto(_bookRepository.GetById(id));
         }
-        
+
         //TODO:
         public void Create(BookDto item)
         {
-            throw new NotImplementedException();
+            List<Author> authors = new List<Author>();
+
+            if (item.AuthorsId != null && item.AuthorsId.Count != 0)
+            {
+                foreach (int id in item.AuthorsId)
+                {
+                    authors.Add(_authorRepository.GetById(id));
+                }
+            }
+
+
+            Book book = new Book(item);
+            book.Authors = authors;
+
+            _bookRepository.Create(book);
         }
     }
 }
