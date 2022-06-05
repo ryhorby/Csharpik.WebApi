@@ -51,5 +51,10 @@ namespace Csharpik.Core.Services.BookServices
 
             return dto;
         }
+
+        public void Delete(int id)
+        {
+            _authorRepository.Delete(id);
+        }
     }
 }

@@ -52,13 +52,26 @@ namespace Csharpik.Core.Services
 
         public BookDto Update(BookDto item)
         {
+            List<Author> authors = new List<Author>();
+
+            foreach (int id in item.AuthorsId)
+            {
+                authors.Add(_authorRepository.GetById(id));
+            }
+
             Book book = new Book(item, item.Id);
-            
+            book.Authors = authors;
+
             book = _bookRepository.Update(book);
 
             BookDto dto = new BookDto(book);
 
             return dto;
+        }
+
+        public void Delete(int id)
+        {
+            _bookRepository.Delete(id);
         }
     }
 }

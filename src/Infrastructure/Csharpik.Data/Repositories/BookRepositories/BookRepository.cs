@@ -41,10 +41,28 @@ namespace Csharpik.Data.Repositories
 
         public Book Update(Book book)
         {
-            _context.Update(book);
+            var dbBook = _context.Books.Find(book.Id);
+            if (dbBook == null)
+                throw new NullReferenceException("Author with this id is not exist");
+
+            dbBook.Title = book.Title;
+            dbBook.Description = book.Description;
+            dbBook.Authors = book.Authors;
+            dbBook.IsFree = book.IsFree;
+
             _context.SaveChanges();
 
-            return GetById(book.Id);
+            return book;
+        }
+
+        public void Delete(int id)
+        {
+            var dbBook = _context.Books.Find(id);
+            if (dbBook == null)
+                throw new NullReferenceException("Book with this id is not exist");
+
+            _context.Books.Remove(dbBook);
+            _context.SaveChanges();
         }
     }
 }

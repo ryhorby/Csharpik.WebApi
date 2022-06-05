@@ -24,11 +24,10 @@ namespace Csharpik.WebApi.Controllers.BookProject
             IEnumerable<AuthorDto> authors = _service.GetAll();
 
             return Json(authors);
-
         }
 
 
-        [Route("GetById")]
+        [Route("GetById/{id}")]
         [HttpGet]
         public IActionResult GetById(int id)
         {
@@ -53,6 +52,15 @@ namespace Csharpik.WebApi.Controllers.BookProject
         public IActionResult Update(AuthorDto dto)
         {
             return Ok(_service.Update(dto));
+        }
+
+        [Route("Delete/{id}")]
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _service.Delete(id);
+
+            return Ok("Book was succesfully deleted");
         }
     }
 }

@@ -15,5 +15,7 @@ namespace Csharpik.Core.Repositories.CommonRepositories
         public void Create(T item);
 
         public T Update(T item); 
+
+        public void Delete(int id);
     }
 }
