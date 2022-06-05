@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Csharpik.Data.Repositories.BookRepositories
 {
-    public class AuthorRepository : IRepository<AuthorDto>
+    public class AuthorRepository : IRepository<Author>
     {
         private readonly CsharpikContext _context;
 
@@ -20,30 +20,21 @@ namespace Csharpik.Data.Repositories.BookRepositories
             _context = context;
         }
 
-        public IEnumerable<AuthorDto> GetAll()
+        public IEnumerable<Author> GetAll()
         {
             IEnumerable<Author> authors = _context.Authors
                   .Include(a => a.Books);
 
-            IEnumerable <AuthorDto> data = _context.Authors
-                   .Include(a => a.Books)
-                   .Select(x => new AuthorDto
-                   {
-                       Id = x.Id,
-                       Name = x.Name,
-                       Biography = x.Biography,
-                       BooksId = x.Books.Select(b => b.Book.Id).ToList()
-                   });
-
-            return data;
+            return authors;
         }
 
-        public AuthorDto GetById(int id)
+        public Author GetById(int id)
         {
-            Author author = _context.Authors.FirstOrDefault(x => x.Id == id);
+            Author author = _context.Authors.Include(a => a.Books)
+                                    .FirstOrDefault(x => x.Id == id);
 
             //HACK:
-            return new AuthorDto();
+            return author;
         }
 
         /* TODO: Realize creating

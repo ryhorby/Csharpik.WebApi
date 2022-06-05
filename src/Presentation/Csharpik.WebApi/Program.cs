@@ -23,9 +23,9 @@ builder.Services.AddSwaggerGen();
 
 //BookProject
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
-builder.Services.AddScoped<IRepository<AuthorDto>, AuthorRepository>();
+builder.Services.AddScoped<IRepository<Author>, AuthorRepository>();
 builder.Services.AddScoped<IBookService<Book>, BookService>();
-builder.Services.AddScoped<IBookService<AuthorDto>, AuthorService >();
+builder.Services.AddScoped<IBookService<AuthorDto>, AuthorService>();
 
 //CryptoProject
 builder.Services.AddScoped<IEncryptorService, EncryptorService>();

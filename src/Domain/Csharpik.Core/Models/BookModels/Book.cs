@@ -24,6 +24,6 @@ namespace Csharpik.Core.Models.BookModels
         [Required]
         public bool IsFree { get; set; }
 
-        public ICollection<BookAuthor> Authors { get; set; }
+        public ICollection<Author> Authors { get; set; }
     }
 }

@@ -7,23 +7,31 @@ namespace Csharpik.Core.Services.BookServices
 {
     public class AuthorService : IBookService<AuthorDto>
     {
-        private readonly IRepository<AuthorDto> _authorRepository;
+        private readonly IRepository<Author> _authorRepository;
 
-        public AuthorService(IRepository<AuthorDto> authorRepository)
+        public AuthorService(IRepository<Author> authorRepository)
         {
             _authorRepository = authorRepository;
         }
 
         public IEnumerable<AuthorDto> GetAll()
         {
-            IEnumerable<AuthorDto> authors = _authorRepository.GetAll();
+            IEnumerable<Author> authors = _authorRepository.GetAll();
+            List<AuthorDto> authorDto = new List<AuthorDto>();
 
-            return authors;
+            foreach (Author author in authors)
+            {
+                authorDto.Add(new AuthorDto(author));
+            }
+
+            return authorDto;
         }
 
         public AuthorDto GetById(int id)
         {
-            return _authorRepository.GetById(id);
+            AuthorDto dto = new AuthorDto(_authorRepository.GetById(id));
+
+            return dto;
         }
     }
 }

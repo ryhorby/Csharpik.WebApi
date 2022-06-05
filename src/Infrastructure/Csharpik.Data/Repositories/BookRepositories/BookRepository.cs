@@ -1,5 +1,6 @@
 ﻿using Csharpik.Core.Models.BookModels;
 using Csharpik.Core.Repositories.CommonRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Csharpik.Data.Repositories
 {

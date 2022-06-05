@@ -13,13 +13,16 @@ namespace Csharpik.Core.Models.BookModels
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string Name { get; set; }
+
+        [MaxLength(50)]
+        public string Surname { get; set; }
 
         [Required]
         [MaxLength(1000)]
         public string Biography { get; set; }
 
-        public ICollection<BookAuthor> Books { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }

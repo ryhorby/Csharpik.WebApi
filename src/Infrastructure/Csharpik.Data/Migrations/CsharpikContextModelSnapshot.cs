@@ -21,6 +21,21 @@ namespace Csharpik.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("AuthorBook", b =>
+                {
+                    b.Property<int>("AuthorsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BooksId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorsId", "BooksId");
+
+                    b.HasIndex("BooksId");
+
+                    b.ToTable("AuthorBook");
+                });
+
             modelBuilder.Entity("Csharpik.Core.Models.BookModels.Author", b =>
                 {
                     b.Property<int>("Id")
@@ -36,8 +51,12 @@ namespace Csharpik.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Surname")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -70,52 +89,19 @@ namespace Csharpik.Data.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Csharpik.Core.Models.BookModels.BookAuthor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("BookAuthor");
-                });
-
-            modelBuilder.Entity("Csharpik.Core.Models.BookModels.BookAuthor", b =>
+            modelBuilder.Entity("AuthorBook", b =>
                 {
                     b.HasOne("Csharpik.Core.Models.BookModels.Author", null)
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
+                        .WithMany()
+                        .HasForeignKey("AuthorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Csharpik.Core.Models.BookModels.Book", null)
-                        .WithMany("Authors")
-                        .HasForeignKey("BookId")
+                        .WithMany()
+                        .HasForeignKey("BooksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Csharpik.Core.Models.BookModels.Author", b =>
-                {
-                    b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("Csharpik.Core.Models.BookModels.Book", b =>
-                {
-                    b.Navigation("Authors");
                 });
 #pragma warning restore 612, 618
         }
