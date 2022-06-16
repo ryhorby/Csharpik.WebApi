@@ -1,5 +1,6 @@
 ﻿using Csharpik.Core.Models.BookModels.dto;
 using Csharpik.Core.Services.Interfaces.BookServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csharpik.WebApi.Controllers.BookProject
@@ -34,7 +35,7 @@ namespace Csharpik.WebApi.Controllers.BookProject
             return Json(bookDto);
         }
 
-        [Route("Create")]
+        [Route("Create"), Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Create(BookDto dto)
         {
@@ -44,7 +45,7 @@ namespace Csharpik.WebApi.Controllers.BookProject
         }
 
 
-        [Route("Update")]
+        [Route("Update"), Authorize()]
         [HttpPut]
         public IActionResult Update(BookDto dto)
         {
