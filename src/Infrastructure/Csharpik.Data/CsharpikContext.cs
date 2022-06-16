@@ -1,4 +1,5 @@
 ﻿using Csharpik.Core.Models.BookModels;
+using Csharpik.Core.Models.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace Csharpik.Data
         public DbSet<Author> Authors { get; set; }
 
         public DbSet<Book> Books { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
